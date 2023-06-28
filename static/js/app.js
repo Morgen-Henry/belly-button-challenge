@@ -30,18 +30,15 @@ function graphs(selectedValue) {
         console.log(`Data: ${data}`);
         // An array of metadata objects
         let metadata = data.metadata;
-        // Filter data where id = selected value after converting their types 
-        // (bc meta.id is in integer format and selectValue from is in string format)
+        // Filter data where id = selected value after converting their types
         let filteredData = metadata.filter((meta) => meta.id == selectedValue);
         // Assign the first object to obj variable
         let obj = filteredData[0]
         // Clear the child elements in div with id sample-metadata
         d3.select("#sample-metadata").html("");
-        // Object.entries() is a built-in method in JavaScript 
-        // This returns an array of a given object's own enumerable property [key, value]
+        // Object.entries() is a built-in method in JavaScript
         let entries = Object.entries(obj);
         // Iterate through the entries array
-        // Add a h5 child element for each key-value pair to the div with id sample-metadata
         entries.forEach(([key,value]) => {
             d3.select("#sample-metadata").append("h5").text(`${key}: ${value}`);
         });
@@ -54,7 +51,7 @@ function horBar(selectedValue) {
     // Fetch the JSON data and console log it
     d3.json(url).then((data) => {
         console.log(`Data: ${data}`);
-        // An array of sample objects
+        // Array of sample objects
         let samples = data.samples;
         // Filter data where id = selected value 
         let filteredData = samples.filter((sample) => sample.id === selectedValue);
